@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class Solution {
+public class SecondOrder {
    int getSecondLargestElement(int n, int []a){
         int max = a[0];
         int secondLargest = -1;
