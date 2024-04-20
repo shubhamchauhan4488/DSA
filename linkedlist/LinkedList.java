@@ -23,7 +23,7 @@ class ListNode {
 public class LinkedList {
 
 	/* converts an array to link list */
-	public convertArr2LL(int[] arr){
+	private static ListNode convertArr2LL(int[] arr){
 		// creating the first element of LL
 		ListNode head = new ListNode(arr[0]);
 		// taking a reference to head
@@ -40,9 +40,20 @@ public class LinkedList {
 		return head;
   }
 
+	/** Traverse the entire linked list */
+	private static void traverse(ListNode head){
+		ListNode current = head;
+		// i.e until we reach the last element, keep going
+		while(current != null){
+			System.out.println(current.data);
+			current = current.next; // for keep going in list
+		}
+	}
+
 	public static void main(String args[]) {
 		int[] arr = { 12, 5, 8, 4 };
 		ListNode head = convertArr2LL(arr);
-		System.out.println(head.data);
+		// System.out.println(head.data);
+		traverse(head);
 	}
 }
