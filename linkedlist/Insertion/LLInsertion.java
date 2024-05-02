@@ -3,19 +3,20 @@ import linkedlist.LinkedList;
 class LLDeletion extends LinkedList {
 
     // Method to insert a node at the front of the linked list
-    public void insertAtHead(int val) {
+    public ListNode insertAtHead(int val) {
         ListNode newNode = new ListNode(val);
         newNode.next = head;
         head = newNode;
+        return head;
     }
 
     // Method to insert a node at the end of the linked list
-    public void insertAtTail(int newVal) {
+    public ListNode insertAtTail(int newVal) {
         ListNode newNode = new Node(newVal);
         // empty list, newNode is the head itself
         if (head == null) {
             head = newNode;
-            return;
+            return head;
         }
         // 1 or more items in the list
         ListNode current = head;
@@ -24,5 +25,6 @@ class LLDeletion extends LinkedList {
         }
         // reached the last element
         current.next = newNode;
+        return head;
     }
 }

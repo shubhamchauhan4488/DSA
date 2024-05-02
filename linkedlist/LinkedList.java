@@ -56,6 +56,22 @@ public class LinkedList {
 		}
 	}
 
+	/**
+	 * Counts the number of nodes in the linked list
+	 */
+	public static int length(ListNode head){
+        ListNode current = head;
+        int count = 0;
+        if(head == null){
+            return count; // return 0, if list empty
+        }
+        while(current != null){
+            count+=1; // keep counting + 1 for every element
+            current = current.next;
+        }
+        return count;
+    }
+
 	/** Searches for 'val' inside the linked list 
 	 *  Returns 1 if found, 0 if not found
 	 *  TC: O(n) worst case
