@@ -28,6 +28,28 @@ class LLDeletion extends LinkedList {
 		return head;
 	}
 
+	// Case 1: even numbers
+  // say 8, insert at middle means the 5th number (after insertion it will be odd
+  // : 9 numbers), middle: (9+1)/2.
+  // so the new number should be the fifth from starting
+  // Case 2: odd numbers
+  // say 5 numbers, insert at middle means the 4th number (after insertion it will
+  // be even : 6 numbers), middle: (6)/2 +1.
+  // so the new number should be the 4th from starting
+  public static ListNode insertAtMiddle(ListNode head) {
+    // to achieve this, we need to add fast.next.next != null in the while loop, to
+    // stop the small 1 position behind the middle
+    ListNode slow = head;
+    ListNode fast = head;
+    while (fast.next.next != null && fast != null) { // [1,2,3,4,5,6] // [1,2,3,4,5]
+      fast = fast.next.next; // 1- > 3- > 5 // 1-> 3-> 5
+      slow = slow.next; // 1 -> 2 -> 3 // 1-> 2-> 3 (for even 6 numbers, 6/2 +1 is the middle)
+    }
+    newNode.next = slow.next;
+    slow.next = newNdoe;
+    return head;
+  }
+
 	public static ListNode insertAtKthFromEnd(ListNode head, int data, int k) {
 		if (head == null)
 			return null; // list is empty
