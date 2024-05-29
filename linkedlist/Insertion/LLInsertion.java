@@ -83,4 +83,36 @@ class LLDeletion extends LinkedList {
 		return head;
 	}
 
+	/**
+	 * Inserts at 'k'th position from the start
+	 * TC: O(n) SC: O(1) no extra space being used
+	 */
+	public static ListNode insertAtKthFromStart(ListNode head,  int data, int k) {
+		ListNode newNode = new ListNode(data);
+		if (k <= 0) { // invalid
+			return head;
+		}
+		if (k == 1) { // insert at head 
+			newNode = newNode.next;
+			return newNode;
+		}
+
+		// the actual kth removal
+		ListNode current = head;
+		// ListNode previous = null;
+		int count = 1;
+		while (current.next != null && count < k -1) { // count 1, count 2, k = 3rd position
+			// previous = current; // no need to keep a previous for the 'insert' unlike 'deletion' where we need to bypass that element
+			current = current.next;
+			count++;
+		}
+		// current will be at k - 1
+		// [12] -> [5](current) -> [8] -> [4] and we want to insert at 3rd position where we have 'current'
+
+		// same insertion logic as everywhere
+		newNode.next = current.next;
+		current.next = newNode;
+		// [12] -> [5](current)-> [10] -> [8] -> [4] 
+		return head;
+	}
 }
